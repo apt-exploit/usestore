@@ -3,7 +3,7 @@
 ## 🔧 Install
 
 ```
-yarn add usestore
+yarn add @apt-exploit/usestore
 ```
 
 ## 💡 Usage
