@@ -11,7 +11,7 @@ yarn add @apt-exploit/usestore
 ### Import 
 
 ```js
-import { store } from 'usestore'
+import { store } from '@apt-exploit/usestore'
 ```
 
 ### Store data
