@@ -1,6 +1,6 @@
 {
   "name": "@apt-exploit/usestore",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get data from local storage asynchronously with ReactJs",
   "main": "dist/usestore.js",
   "module": "dist/usestore.es.js",
@@ -37,5 +37,8 @@
   },
   "bugs": {
     "url": "https://github.com/apt-exploit/usestore/issues"
+  },
+  "dependencies": {
+    "@apt-exploit/usestore": "apt-exploit/usestore"
   }
 }
