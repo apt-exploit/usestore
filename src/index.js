@@ -1,4 +1,4 @@
-function Promise(getValue, callback) {
+function cPromise(getValue, callback) {
   return new Promise((resolve, reject) => {
     try {
       const value = getValue();
@@ -15,7 +15,7 @@ function Promise(getValue, callback) {
   });
 };
 
-function PromiseAll(promises, callback, processResult) {
+function cPromiseAll(promises, callback, processResult) {
   return Promise.all(promises).then(
     result => {
       const value = processResult ? processResult(result) : null;
@@ -32,31 +32,31 @@ function PromiseAll(promises, callback, processResult) {
 export class store {
 
   static set(key, value, callback) {
-    return Promise(() => {
+    return cPromise(() => {
       window.localStorage.setItem(key, value);
     }, callback);
   }
 
   static get(key, callback) {
-    return Promise(() => {
+    return cPromise(() => {
       return window.localStorage.getItem(key);
     }, callback);
   }
 
   static remove(key, callback) {
-    return Promise(() => {
+    return cPromise(() => {
       return window.localStorage.removeItem(key);
     }, callback);
   }
 
   static clear(callback) {
-    return Promise(() => {
+    return cPromise(() => {
       window.localStorage.clear();
     }, callback);
   }
 
   static getKeys(callback) {
-    return Promise(() => {
+    return cPromise(() => {
       const numberOfKeys = window.localStorage.length;
       const keys = [];
       for (const i = 0; i < numberOfKeys; i += 1) {
@@ -69,7 +69,7 @@ export class store {
 
   static setMultiple(pairs, callback) {
     const promises = pairs.map(item => store.setItem(key, item[key]))
-    return PromiseAll(promises, callback);
+    return cPromiseAll(promises, callback);
   }
 
   static getMultiple(keys, callback) {
@@ -79,11 +79,11 @@ export class store {
       json[keys[i]] = value
       return json
     });
-    return PromiseAll(promises, callback, processResult);
+    return cPromiseAll(promises, callback, processResult);
   }
 
   static removeMultiple(keys, callback) {
     const promises = keys.map(key => store.removeItem(key));
-    return PromiseAll(promises, callback);
+    return cPromiseAll(promises, callback);
   }
 }
